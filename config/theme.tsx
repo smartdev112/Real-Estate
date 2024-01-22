@@ -1,8 +1,20 @@
 import { createTheme } from '@mui/material/styles';
 
 export const lightTheme = createTheme({
+    palette: {
+        text: {
+            primary: '#000'
+        }
+    },
     typography: {
-        fontFamily: 'Rubik'
+        fontFamily: 'Rubik',
+        fontWeightLight: 400,
+        h2: {
+            lineHeight: 1
+        },
+        body1: {
+            lineHeight: 1.8
+        }
     },
     components: {
         MuiCssBaseline: {

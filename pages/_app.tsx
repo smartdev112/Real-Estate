@@ -1,4 +1,8 @@
 import '@/styles/global.css'
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+
 import Layout from '@/components/layouts/Layout'
 import type { AppProps } from "next/app";
 import { ThemeProvider } from '@mui/material/styles';
