@@ -51,6 +51,24 @@ export const slideContent = [
 ];
 
 export const homeGifContent = [
-    { name: '', imgLink: '/assets/imgs/Screenshot_217.png', gifLink: '/assets/imgs/youtube-video-gif-1.gif' },
-    { name: '', imgLink: '/assets/imgs/Screenshot_218.png', gifLink: '/assets/imgs/youtube-video-gif-5.gif' },
+    { name: 'WE OFFER A VARIETY OF WAYS TO MANAGE YOUR MONEY BY YOUR INDIVIDUAL PREFERENCES.', imgLink: '/assets/imgs/Screenshot_217.png', gifLink: '/assets/imgs/youtube-video-gif-1.gif' },
+    { name: 'OUR OBJECTIVE IS TO WORK WITH YOU AND MANAGE YOUR PORTFOLIO ACCORDING TO YOUR PREFERENCES AND REQUIREMENTS.', imgLink: '/assets/imgs/Screenshot_218.png', gifLink: '/assets/imgs/youtube-video-gif-5.gif' },
+]
+
+export const slideContent1 = [
+    '/assets/imgs/partner04-e1690836733202.jpg',
+    '/assets/imgs/partner03.jpg',
+    '/assets/imgs/partner02.jpg',
+    '/assets/imgs/partner01.jpg',
+    '/assets/imgs/png-transparent-vodafone-logo-vodafone-logo-encapsulated-postscript-vodafone-miscellaneous-text-trademark-thumbnail-removebg-preview.png',
+    '/assets/imgs/logo-wb-header-en.png',
+    '/assets/imgs/logo-2.png',
+    '/assets/imgs/Screenshot_105.png',
+    '/assets/imgs/Screenshot_104.png',
+    '/assets/imgs/Screenshot_103.png',
+    '/assets/imgs/Screenshot_102.png',
+    '/assets/imgs/Screenshot_101.png',
+    '/assets/imgs/430e39cecdbf-cfm-indo-wm_rgb-2018.png',
+    '/assets/imgs/partner06.jpg',
+    '/assets/imgs/partner05.jpg',
 ]

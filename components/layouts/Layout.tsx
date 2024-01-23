@@ -20,7 +20,7 @@ export default function Layout({ children }: Props) {
             </Head>
             <CssBaseline />
             <Box id="back-to-top-anchor" />
-            <Header children={<></>} />
+            <Header />
             {children}
             <Footer />
         </React.Fragment>

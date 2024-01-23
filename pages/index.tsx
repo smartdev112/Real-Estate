@@ -1,10 +1,61 @@
 import Image from "next/image";
-import { Box, Stack, Typography, Card, CardMedia, CardContent } from "@mui/material";
+import {
+    Box,
+    Stack,
+    Typography,
+    Card,
+    CardMedia,
+    CardContent,
+    Grid,
+    Container,
+    FormControl,
+    InputLabel,
+    TextField,
+    Button,
+    Link
+} from "@mui/material";
+import { alpha, styled } from '@mui/material/styles';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Pagination } from "swiper/modules";
-import { homeContents, slideContent, homeGifContent } from "@/config/contant";
+import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+import {
+    homeContents,
+    slideContent,
+    homeGifContent,
+    slideContent1,
+} from "@/config/contant";
+import { useResponsive } from "@/contexts/ResponsiveContext";
+
+const BootstrapInput = styled(TextField)(({ theme }) => ({
+    "label + &": {
+        marginTop: theme.spacing(3),
+    },
+    "& .MuiInputBase-input": {
+        borderRadius: 4,
+        position: "relative",
+        backgroundColor: theme.palette.mode === "light" ? "#F3F6F9" : "#1A2027",
+        border: "1px solid",
+        borderColor: theme.palette.mode === "light" ? "#E0E3E7" : "#2D3843",
+        fontSize: 16,
+        padding: "10px 12px",
+        transition: theme.transitions.create([
+            "border-color",
+            "background-color",
+            "box-shadow",
+        ]),
+        "&:focus": {
+            boxShadow: `${alpha(
+                theme.palette.primary.main,
+                0.25
+            )} 0 0 0 0.2rem`,
+            borderColor: theme.palette.primary.main,
+        },
+    },
+}));
 
 export default function Home() {
+    const { matches_1024, matches_900, matches_600, matches_425 } =
+        useResponsive();
+
     return (
         <Box
             sx={{
@@ -12,7 +63,17 @@ export default function Home() {
                 width: "100%",
             }}
         >
-            <Box component="div" sx={{ bgcolor: '#000000', opacity: 0.65, height: '100%', width: '100%', position: 'absolute', zIndex: 1 }}></Box>
+            <Box
+                component="div"
+                sx={{
+                    bgcolor: "#000000",
+                    opacity: 0.65,
+                    height: "100%",
+                    width: "100%",
+                    position: "absolute",
+                    zIndex: 1,
+                }}
+            ></Box>
             <Box
                 sx={{
                     height: "100%",
@@ -44,7 +105,7 @@ export default function Home() {
                     position: "relative",
                     height: "100%",
                     width: "100%",
-                    zIndex: 2
+                    zIndex: 2,
                 }}
             >
                 <Stack
@@ -120,19 +181,41 @@ export default function Home() {
             </Box>
             <Box
                 sx={{
-                    backgroundImage: 'url("/assets/imgs/Mount-St-Mayfair-p-1080.jpg")',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center left',
-                    backgroundRepeat: 'no-repeat',
-                    height: '100%',
-                    overflow: 'hidden'
+                    backgroundImage:
+                        'url("/assets/imgs/Mount-St-Mayfair-p-1080.jpg")',
+                    backgroundSize: "cover",
+                    backgroundPosition: "center left",
+                    backgroundRepeat: "no-repeat",
+                    overflow: "hidden",
                 }}
             >
-                <Box component="div" sx={{ bgcolor: '#000000', opacity: 0.57, filter: 'brightness( 100% ) contrast( 100% ) saturate( 100% ) blur( 0px ) hue-rotate( 0deg )', height: '100%', width: '100%', position: 'absolute' }}></Box>
-                <Stack direction="column" justifyContent="center" alignItems="center" py="110px">
+                <Box
+                    component="div"
+                    sx={{
+                        bgcolor: "#000000",
+                        opacity: 0.41,
+                        height: "988px",
+                        width: "100%",
+                        position: 'absolute'
+                    }}
+                ></Box>
+                <Stack
+                    direction="column"
+                    justifyContent="center"
+                    alignItems="center"
+                    py="110px"
+                >
                     <Box color="white" mb="40px" maxWidth="883px" zIndex={1}>
-                        <Typography fontSize="30px" textAlign="center" mb="20px">{homeContents[2].title}</Typography>
-                        <Typography fontSize="15px" textAlign="center">{homeContents[2].content}</Typography>
+                        <Typography
+                            fontSize="30px"
+                            textAlign="center"
+                            mb="20px"
+                        >
+                            {homeContents[2].title}
+                        </Typography>
+                        <Typography fontSize="15px" textAlign="center">
+                            {homeContents[2].content}
+                        </Typography>
                     </Box>
                     <Box maxWidth="1000px" zIndex={1}>
                         <Swiper
@@ -148,16 +231,28 @@ export default function Home() {
                                 slideShadows: true,
                             }}
                             modules={[EffectCoverflow, Pagination]}
+                            className="home-service-slide"
                         >
                             {slideContent.map((data, index) => (
                                 <SwiperSlide key={index}>
-                                    <Card sx={{ maxWidth: 500, background: 'transparent', borderRadius: 0 }}>
+                                    <Card
+                                        sx={{
+                                            maxWidth: 500,
+                                            background: "transparent",
+                                            borderRadius: 0,
+                                        }}
+                                    >
                                         <CardMedia
                                             component="img"
                                             alt="green iguana"
                                             image={data.imgLink}
                                         />
-                                        <CardContent sx={{ pb: '10px !important', backgroundColor: '#FFFFFF80' }}>
+                                        <CardContent
+                                            sx={{
+                                                pb: "10px !important",
+                                                backgroundColor: "#FFFFFF80",
+                                            }}
+                                        >
                                             <Typography
                                                 gutterBottom
                                                 textAlign="center"
@@ -177,44 +272,243 @@ export default function Home() {
                 </Stack>
             </Box>
             <Box my="45px" py="50px">
-                <Stack direction="column" justifyContent="center" alignItems="center">
+                <Stack
+                    direction="column"
+                    justifyContent="center"
+                    alignItems="center"
+                >
                     <Box p="10px" maxWidth="883px">
-                        <Typography fontSize="20px" mb="20px" textAlign="center">{homeContents[3].title}</Typography>
-                        <Typography fontSize="15px" mb="20px" textAlign="center">{homeContents[3].content}</Typography>
+                        <Typography
+                            fontSize="20px"
+                            mb="20px"
+                            textAlign="center"
+                        >
+                            {homeContents[3].title}
+                        </Typography>
+                        <Typography
+                            fontSize="15px"
+                            mb="20px"
+                            textAlign="center"
+                        >
+                            {homeContents[3].content}
+                        </Typography>
                     </Box>
                 </Stack>
             </Box>
-            <Box sx={{ bgcolor: '#03162A', color: 'white' }}>
-                <Stack direction="row" justifyContent="space-around" p="100px 0 50px">
-                    <Box></Box>
-                    <Box p="10px" maxWidth="457px">
-                        <Typography variant="h2" fontSize="20px" mb="20px" textAlign="center">{homeContents[4].title}</Typography>
-                        <Typography fontSize="15px" mb="20px" textAlign="center">{homeContents[4].content}</Typography>
-                    </Box>
-                    <Box p="10px" maxWidth="464px">
-                        <Typography variant="h2" fontSize="20px" mb="20px" textAlign="center">{homeContents[5].title}</Typography>
-                        {homeContents[5].content.map((data, index) => (
-                            <Typography key={index} fontSize="15px" mb="20px" textAlign="center">{data}</Typography>
+            <Box sx={{ bgcolor: "#03162A", color: "white" }}>
+                <Container maxWidth="xl">
+                    <Grid container spacing={1} p="100px 0 50px">
+                        <Grid
+                            container
+                            item
+                            lg={6}
+                            md={12}
+                            direction="row"
+                            justifyContent="center"
+                            alignItems="center"
+                        >
+                            <Box p="10px" maxWidth="457px">
+                                <Typography
+                                    variant="h2"
+                                    fontSize="20px"
+                                    mb="20px"
+                                    textAlign="center"
+                                >
+                                    {homeContents[4].title}
+                                </Typography>
+                                <Typography
+                                    fontSize="15px"
+                                    mb="20px"
+                                    textAlign="center"
+                                >
+                                    {homeContents[4].content}
+                                </Typography>
+                            </Box>
+                        </Grid>
+                        <Grid
+                            container
+                            item
+                            lg={6}
+                            md={12}
+                            direction="row"
+                            justifyContent="center"
+                            alignItems="center"
+                        >
+                            <Box p="10px" maxWidth="464px">
+                                <Typography
+                                    variant="h2"
+                                    fontSize="20px"
+                                    mb="20px"
+                                    textAlign="center"
+                                >
+                                    {homeContents[5].title}
+                                </Typography>
+                                {homeContents[5].content.map((data, index) => (
+                                    <Typography
+                                        key={index}
+                                        fontSize="15px"
+                                        mb="20px"
+                                        textAlign="center"
+                                    >
+                                        {data}
+                                    </Typography>
+                                ))}
+                            </Box>
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={1} p="50px 0 100px">
+                        {homeGifContent.map((data, index) => (
+                            <Grid
+                                container
+                                item
+                                lg={6}
+                                md={12}
+                                direction="row"
+                                justifyContent="center"
+                                alignItems="center"
+                            >
+                                <Box
+                                    key={index}
+                                    sx={{
+                                        backgroundImage: `url(${data.imgLink})`,
+                                        backgroundSize: "cover",
+                                        backgroundPosition: "center center",
+                                        backgroundRepeat: "no-repeat",
+                                        maxWidth: "760px",
+                                        width: "100%",
+                                        height: "628px",
+                                        m: "10px",
+                                        overflow: "hidden",
+                                        ":hover": {
+                                            backgroundImage: `url(${data.gifLink})`,
+                                        },
+                                    }}
+                                >
+                                    <Box
+                                        component="div"
+                                        sx={{
+                                            bgcolor: "#000000A8",
+                                            height: "628px",
+                                            maxWidth: "760px",
+                                            width: "100%",
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                            p: "20px",
+                                        }}
+                                    >
+                                        <Typography
+                                            fontSize="23px"
+                                            textAlign="center"
+                                        >
+                                            {data.name}
+                                        </Typography>
+                                    </Box>
+                                </Box>
+                            </Grid>
                         ))}
-                    </Box>
-                    <Box></Box>
-                </Stack>
-                <Stack direction="row" justifyContent="center" alignItems="center" gap={1} p="50px 0 100px">
-                    {homeGifContent.map((data, index) => (
-                        <Box key={index} sx={{
-                            backgroundImage: `url(${data.imgLink})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'left bottom',
-                            backgroundRepeat: 'no-repeat',
-                            width: '760px',
-                            height: '628px',
-                            ":hover": {
-                                backgroundImage: `url(${data.gifLink})`,
+                    </Grid>
+                </Container>
+            </Box>
+            <Box py="50px" sx={{ bgcolor: "#fff" }}>
+                <Stack
+                    direction="column"
+                    justifyContent="center"
+                    alignItems="center"
+                >
+                    <Box maxWidth="1120px" width="100%">
+                        <Typography
+                            fontSize="20px"
+                            mb="20px"
+                            textAlign="center"
+                        >
+                            Our Partners
+                        </Typography>
+                        <Swiper
+                            slidesPerView={
+                                matches_1024
+                                    ? 5
+                                    : matches_900
+                                    ? 4
+                                    : matches_600
+                                    ? 3
+                                    : matches_425
+                                    ? 2
+                                    : 1
                             }
-                        }}>
-                            <Box component="div" sx={{ bgcolor: '#000000A8', height: '628px', width: '760px', position: 'absolute' }}></Box>
-                        </Box>
-                    ))}
+                            // centeredSlides={true}
+                            loop={true}
+                            pagination={{
+                                clickable: true,
+                            }}
+                            navigation={true}
+                            modules={[Pagination, Navigation]}
+                            className="home-partner-slide"
+                        >
+                            {slideContent1.map((data, index) => (
+                                <SwiperSlide key={index}>
+                                    <Box
+                                        width="224px"
+                                        height="150px"
+                                        display="flex"
+                                        justifyContent="center"
+                                        alignItems="center"
+                                    >
+                                        <Box
+                                            component="img"
+                                            src={data}
+                                            height="auto"
+                                            maxWidth="100%"
+                                            m="auto"
+                                        />
+                                    </Box>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </Box>
+                </Stack>
+            </Box>
+            <Box sx={{ bgcolor: "#AFC9E2" }} py="40px">
+                <Box height="70px" className="only-mobile" />
+                <Stack
+                    direction="column"
+                    justifyContent="center"
+                    alignItems="center"
+                >
+                    <Box maxWidth="476px" width="100%" display="flex" flexDirection="column" p="10px" gap={2} mb="20px">
+                        <Typography fontSize="15px" textAlign="center" maxWidth="456px">
+                            Our intentions are to assist our clients in creating
+                            their financial goals and to offer creative and
+                            flexible financial solutions to help them achieve
+                            those goals
+                        </Typography>
+                        <FormControl variant="standard">
+                            <InputLabel shrink htmlFor="name">
+                                <Typography fontSize={19}>Name</Typography>
+                            </InputLabel>
+                            <BootstrapInput
+                                id="name"
+                            />
+                        </FormControl>
+                        <FormControl variant="standard">
+                            <InputLabel shrink htmlFor="email">
+                                <Typography fontSize={19}>Email Address</Typography>
+                            </InputLabel>
+                            <BootstrapInput
+                                error={false}
+                                id="email"
+                                helperText=""
+                            />
+                        </FormControl>
+                        <FormControl variant="standard">
+                            <Button sx={{ borderRadius: '30px', background: 'black', color: 'white', height: '40px' }} >SEND</Button>
+                        </FormControl>
+                    </Box>
+                    <Box height="120px" className="only-mobile" />
+                    <Stack direction="row" justifyContent="center" alignItems="center" spacing={4}>
+                        <Link href="" underline="none"><Typography sx={{ color: '#000', fontSize: 12, ':hover': { color: '#fff' } }}>DISCLOSURE</Typography></Link>
+                        <Link href="" underline="none"><Typography sx={{ color: '#000', fontSize: 12, ':hover': { color: '#fff' } }}>CONTACT</Typography></Link>
+                    </Stack>
                 </Stack>
             </Box>
         </Box>
