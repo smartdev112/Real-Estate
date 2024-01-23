@@ -359,6 +359,7 @@ export default function Home() {
                     <Grid container spacing={1} p="50px 0 100px">
                         {homeGifContent.map((data, index) => (
                             <Grid
+                                key={index}
                                 container
                                 item
                                 lg={6}
@@ -368,7 +369,6 @@ export default function Home() {
                                 alignItems="center"
                             >
                                 <Box
-                                    key={index}
                                     sx={{
                                         backgroundImage: `url(${data.imgLink})`,
                                         backgroundSize: "cover",
